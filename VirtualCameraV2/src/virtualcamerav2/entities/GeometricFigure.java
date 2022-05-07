@@ -30,4 +30,34 @@ public class GeometricFigure {
     public Color getColor(){
         return color;
     }
+    
+    public double getBiggestZ(){
+        return calculateBiggestZ();
+    }
+    
+    public double getSmallestZ(){
+        return calculateSmallestZ();
+    }
+    
+    private double calculateBiggestZ(){
+        double biggestZ = Integer.MIN_VALUE;
+        for(Point3D point : pointList){
+            if(point.getZ() > biggestZ){
+                biggestZ = point.getZ();
+            }
+        }
+        return biggestZ;
+    }
+    
+    private double calculateSmallestZ(){
+        double smallestZ = Integer.MAX_VALUE;
+        for(Point3D point : pointList){
+            if(point.getZ() < smallestZ){
+                smallestZ = point.getZ();
+            }
+        }
+        return smallestZ;
+    }
+    
+    
 }

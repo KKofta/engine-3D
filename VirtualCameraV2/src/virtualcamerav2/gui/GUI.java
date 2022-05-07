@@ -31,7 +31,7 @@ public class GUI extends Application {
         {
             add(backSquare);
             add(frontSquare);
-            //add(skewedRectangle);
+            add(skewedRectangle);
         }
     };
 
@@ -43,6 +43,7 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        sortFigures();
         projectAndDrawAllPolygons();
 
         Group root = new Group();
@@ -139,6 +140,8 @@ public class GUI extends Application {
     
     private void sortFigures(){
         PainterAlgorithm painterAlgorithm = new PainterAlgorithm(figures);
+        figures = painterAlgorithm.SortByZCoordinate();
+        //painterAlgorithm.SortByZCoordinate(figures);
     }
 
     private void projectAndDrawAllPolygons() {        
