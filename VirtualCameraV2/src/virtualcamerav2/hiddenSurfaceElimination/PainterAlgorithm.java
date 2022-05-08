@@ -5,20 +5,15 @@ import virtualcamerav2.entities.GeometricFigure;
 import virtualcamerav2.entities.Point3D;
 
 public class PainterAlgorithm {
-
-    ArrayList<GeometricFigure> figures = new ArrayList<>();
+    
     double[] observator = new double[]{0, 0, 0, 1};
 
-    public PainterAlgorithm() {
-    }
-
     public ArrayList<GeometricFigure> SortByPlanes(ArrayList<GeometricFigure> figures) {
-        this.figures = figures;
         boolean swapped;
         for (int i = 0; i < figures.size() - 1; i++) {
             swapped = false;
             for (int j = 0; j < figures.size() - i - 1; j++) {
-                boolean performSwap = checkFigureSide(j);
+                boolean performSwap = checkFigureSide(j, figures);
 
                 if (performSwap) {
                     GeometricFigure temp = figures.get(j);
@@ -34,20 +29,18 @@ public class PainterAlgorithm {
         return figures;
     }
 
-    private boolean checkFigureSide(int index) {
+    private boolean checkFigureSide(int index, ArrayList<GeometricFigure> figures) {
         int sameSide = 0;
         int otherSide = 0;
         
         double[] plane = figures.get(index).calculatePlaneEquation();
         double locationObservator = plane[0] * observator[0] + plane[1] * observator[1] + plane[2] * observator[2] + plane[3] * observator[3];
-        System.out.println("observator: " + locationObservator);
 
         ArrayList<Point3D> list = figures.get(index+1).getFigurePoints();
         int numberOfPoints = list.size();
 
         for (int i = 0; i < numberOfPoints; i++) {
             double locationPoint = plane[0] * list.get(i).getX() + plane[1] * list.get(i).getY() + plane[2] * list.get(i).getZ() + plane[3];
-            System.out.println("Point " + i + " : " + locationPoint);
 
             if (locationPoint * locationObservator > 0) {
                 sameSide++;
@@ -55,25 +48,21 @@ public class PainterAlgorithm {
                 otherSide++;
             }
         }
-        System.out.println("");
 
         if (sameSide == numberOfPoints) {//we don't swap
             return false;
         } else if (otherSide == numberOfPoints) {//we swap
             return true;
         } else {
-            System.out.println("weszlismy");
-            return checkFigureSideReversly(index+1);
+            return checkFigureSideReversly(index+1, figures);
         }
     }
     
-    private boolean checkFigureSideReversly(int index) {
+    private boolean checkFigureSideReversly(int index, ArrayList<GeometricFigure> figures) {
         int sameSide = 0;
-        //int otherSide = 0;
         
         double[] plane = figures.get(index).calculatePlaneEquation();
         double locationObservator = plane[0] * observator[0] + plane[1] * observator[1] + plane[2] * observator[2] + plane[3] * observator[3];
-        System.out.println("observator: " + locationObservator);
 
         ArrayList<Point3D> list = figures.get(index-1).getFigurePoints();
         int numberOfPoints = list.size();
