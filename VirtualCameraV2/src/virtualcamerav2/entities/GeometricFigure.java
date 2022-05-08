@@ -2,7 +2,6 @@ package virtualcamerav2.entities;
 
 import javafx.scene.paint.Color;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class GeometricFigure {
     

@@ -34,6 +34,7 @@ public class GUI extends Application {
             add(skewedRectangle);
         }
     };
+    PainterAlgorithm painterAlgorithm = new PainterAlgorithm();
 
     private CameraMovementInterface cameraMovement = new CameraMovement(backSquare);
     private CameraMovementInterface cameraMovement2 = new CameraMovement(frontSquare);
@@ -139,9 +140,7 @@ public class GUI extends Application {
     }
     
     private void sortFigures(){
-        PainterAlgorithm painterAlgorithm = new PainterAlgorithm(figures);
-        figures = painterAlgorithm.SortByZCoordinate();
-        //painterAlgorithm.SortByZCoordinate(figures);
+        figures = painterAlgorithm.SortByPlanes(figures);
     }
 
     private void projectAndDrawAllPolygons() {        
