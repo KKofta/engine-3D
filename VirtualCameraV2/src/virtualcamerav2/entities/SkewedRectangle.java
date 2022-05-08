@@ -13,9 +13,9 @@ public class SkewedRectangle extends GeometricFigure {
     private void createRectangle() {
         //initialize 3D points of the front wall 
         Point3D frontLeftUp3 = new Point3D(length / 2, -length, 50.0);
-        Point3D frontRightUp3 = new Point3D(4 * length, -length, 100.0);
+        Point3D frontRightUp3 = new Point3D(4 * length, -length, 150.0);
         Point3D frontLeftDown3 = new Point3D(length / 2, length, 50.0);
-        Point3D frontRightDown3 = new Point3D(4 * length, length, 100.0);
+        Point3D frontRightDown3 = new Point3D(4 * length, length, 150.0);
 
         //initialize 3D lines of the front wall
         Line3D frontUp3 = new Line3D(frontLeftUp3, frontRightUp3);
