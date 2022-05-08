@@ -2,6 +2,7 @@ package virtualcamerav2.entities;
 
 import javafx.scene.paint.Color;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GeometricFigure {
     
@@ -59,5 +60,24 @@ public class GeometricFigure {
         return smallestZ;
     }
     
-    
+    public double [] calculatePlaneEquation() {
+        //we need at least 3 points to determine a plane
+        Point3D P = pointList.get(0);
+        Point3D Q = pointList.get(1);
+        Point3D R = pointList.get(2);
+
+        double [] vectorPQ = new double []{Q.getX() - P.getX(), Q.getY() - P.getY(), Q.getZ() - P.getZ()};
+        double [] vectorPR = new double []{R.getX() - P.getX(), R.getY() - P.getY(), R.getZ() - P.getZ()};
+        
+        //n = PQ x PR. Normal vector n=(a,b,c)
+        double a = vectorPQ[1]*vectorPR[2] - vectorPQ[2]*vectorPR[1];
+        double b = vectorPQ[0]*vectorPR[2] - vectorPQ[2]*vectorPR[0];
+        double c = vectorPQ[0]*vectorPR[1] - vectorPQ[1]*vectorPR[0];
+        
+        //calculaing plane from normal vector and point P. a*x + b*y + c*z = d => d - ?
+        double d = a*P.getX() + b*P.getY() + c*P.getZ();
+        
+        //a*x + b*y + c*z - d = 0 
+        return new double []{a,b,c,-d};
+    }
 }
