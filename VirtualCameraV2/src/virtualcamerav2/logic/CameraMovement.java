@@ -1,161 +1,83 @@
 package virtualcamerav2.logic;
 
-import virtualcamerav2.entities.MiddleOfProjection;
+import virtualcamerav2.interfaces.FigureMovementInterface;
+import virtualcamerav2.interfaces.CameraMovementInterface;
 import java.util.ArrayList;
 import virtualcamerav2.entities.GeometricFigure;
-import virtualcamerav2.entities.Point3D;
+import virtualcamerav2.entities.MiddleOfProjection;
+//it moves the list of all created figures 
 
 public class CameraMovement implements CameraMovementInterface {
-    
-    private GeometricFigure figure = new GeometricFigure();
-    private ArrayList<Point3D> points3DList = figure.getFigurePoints();
-    private MatrixOperations mathHelper = new MatrixOperations();
-    
-    public CameraMovement(GeometricFigure figure){
-        this.figure = figure;
-        this.points3DList = figure.getFigurePoints();
-    }
-    
-    @Override
-    public void translateUp() {
-        double Ty = 2.0;
 
-        for (int i = 0; i < points3DList.size(); i++) {
-            //current values of y coordinate            
-            double currentY = points3DList.get(i).getY();
+    ArrayList<FigureMovementInterface> figureMovementList = new ArrayList<>();
 
-            //update list of points
-            points3DList.get(i).setY(currentY + Ty);
-        }
+    public CameraMovement(ArrayList<GeometricFigure> figures) {
+        figures.stream().map(figure -> new FigureMovement(figure)).forEachOrdered(figureMovement -> {
+            figureMovementList.add(figureMovement);
+        });
     }
 
     @Override
-    public void translateDown() {
-        double Ty = 2.0;
-
-        for (int i = 0; i < points3DList.size(); i++) {
-            //current values of y coordinate          
-            double currentY = points3DList.get(i).getY();
-
-            //update list of points            
-            points3DList.get(i).setY(currentY - Ty);
-        }
-    }
-
-
-    @Override
-    public void translateRight() {
-        double Tx = 2.0;
-
-        for (int i = 0; i < points3DList.size(); i++) {
-            //current values of y coordinate            
-            double currentX = points3DList.get(i).getX();
-
-            //update list of points
-            points3DList.get(i).setX(currentX - Tx);
-        }
+    public void TranslateUp() {
+        figureMovementList.forEach(cameraMovementOject -> {
+            cameraMovementOject.translateUp();
+        });
     }
 
     @Override
-    public void translateLeft() {
-        double Tx = 2.0;
-
-        for (int i = 0; i < points3DList.size(); i++) {
-            //current values of y coordinate
-            double currentX = points3DList.get(i).getX();
-
-            //update list of points
-            points3DList.get(i).setX(currentX + Tx);
-        }
+    public void TranslateDown() {
+        figureMovementList.forEach(cameraMovementOject -> {
+            cameraMovementOject.translateDown();
+        });
     }
 
     @Override
-    public void translateForward() {
-        double Tz = 2.0;
-
-        for (int i = 0; i < points3DList.size(); i++) {
-            //current values of y coordinate            
-            double currentZ = points3DList.get(i).getZ();
-
-            //update list of points
-            points3DList.get(i).setZ(currentZ - Tz);
-        }
+    public void TranslateRight() {
+        figureMovementList.forEach(cameraMovementOject -> {
+            cameraMovementOject.translateRight();
+        });
     }
 
     @Override
-    public void translateBackward() {
-        double Tz = 2.0;
-
-        for (int i = 0; i < points3DList.size(); i++) {
-            //current values of y coordinate
-            double currentZ = points3DList.get(i).getZ();
-
-            //update list of points
-            points3DList.get(i).setZ(currentZ + Tz);
-        }
+    public void TranslateLeft() {
+        figureMovementList.forEach(cameraMovementOject -> {
+            cameraMovementOject.translateLeft();
+        });
     }
 
     @Override
-    public void pivotOX(double degree) {
-        double[][] MOX = mathHelper.createMatrixMOX(degree);        
-        double[][] PointVector3D;
-        double[][] pivotedPointVector;
-
-        for (int i = 0; i < points3DList.size(); i++) {
-            //take current vectors            
-            PointVector3D = points3DList.get(i).getPointVector();
-
-            //pivot - multipy            
-            pivotedPointVector = mathHelper.multiplyMatrices(MOX, PointVector3D);
-
-            //update point             
-            points3DList.get(i).updateCoordinates(
-                    pivotedPointVector[0][0],
-                    pivotedPointVector[1][0],
-                    pivotedPointVector[2][0]);
-        }
+    public void TranslateForward() {
+        figureMovementList.forEach(cameraMovementOject -> {
+            cameraMovementOject.translateForward();
+        });
     }
 
     @Override
-    public void pivotOY(double degree) {
-        double[][] MOY = mathHelper.createMatrixMOY(degree);        
-        double[][] PointVector3D;
-        double[][] pivotedPointVector;
-
-        for (int i = 0; i < points3DList.size(); i++) {
-            //take current vectors         
-            PointVector3D = points3DList.get(i).getPointVector();
-
-            //pivot - multipy          
-            pivotedPointVector = mathHelper.multiplyMatrices(MOY, PointVector3D);
-
-            //update point            
-            points3DList.get(i).updateCoordinates(
-                    pivotedPointVector[0][0],
-                    pivotedPointVector[1][0],
-                    pivotedPointVector[2][0]);
-        }
+    public void TranslateBackward() {
+        figureMovementList.forEach(cameraMovementOject -> {
+            cameraMovementOject.translateBackward();
+        });
     }
 
     @Override
-    public void pivotOZ(double degree) {
-        double[][] MOZ = mathHelper.createMatrixMOZ(degree);
-        double[][] PointVector3D;
-        double[][] pivotedPointVector;
+    public void PivotOX(double degree) {
+        figureMovementList.forEach(cameraMovementOject -> {
+            cameraMovementOject.pivotOX(degree);
+        });
+    }
 
-        for (int i = 0; i < points3DList.size(); i++) {
-            //take current vectors
-            PointVector3D = points3DList.get(i).getPointVector();
+    @Override
+    public void PivotOY(double degree) {
+        figureMovementList.forEach(cameraMovementOject -> {
+            cameraMovementOject.pivotOY(degree);
+        });
+    }
 
-            //pivot - multipy            
-            pivotedPointVector = mathHelper.multiplyMatrices(MOZ, PointVector3D);
-
-            //update point             
-            points3DList.get(i).updateCoordinates(
-                    pivotedPointVector[0][0],
-                    pivotedPointVector[1][0],
-                    pivotedPointVector[2][0]);
-        }
+    @Override
+    public void PivotOZ(double degree) {
+        figureMovementList.forEach(cameraMovementOject -> {
+            cameraMovementOject.pivotOZ(degree);
+        });
     }
 
     @Override

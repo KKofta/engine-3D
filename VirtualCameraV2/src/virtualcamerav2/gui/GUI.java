@@ -1,6 +1,5 @@
 package virtualcamerav2.gui;
 
-import virtualcamerav2.logic.CameraMovement;
 import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -9,13 +8,12 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
-import virtualcamerav2.entities.BackSquare;
-import virtualcamerav2.entities.FrontSquare;
 import virtualcamerav2.entities.GeometricFigure;
-import virtualcamerav2.entities.SkewedRectangle;
 import virtualcamerav2.hiddenSurfaceElimination.PainterAlgorithm;
-import virtualcamerav2.logic.CameraMovementInterface;
+import virtualcamerav2.interfaces.CameraMovementInterface;
+import virtualcamerav2.logic.CreatedGeometricFigures;
 import virtualcamerav2.logic.MatrixOperations;
+import virtualcamerav2.logic.CameraMovement;
 
 public class GUI extends Application {
 
@@ -24,22 +22,9 @@ public class GUI extends Application {
     private final double middleX = WIDTH / 2.0;
     private final double middleY = HEIGHT / 2.0;
 
-    private GeometricFigure backSquare = new BackSquare();
-    private GeometricFigure frontSquare = new FrontSquare();
-    private GeometricFigure skewedRectangle = new SkewedRectangle();
-    private ArrayList<GeometricFigure> figures = new ArrayList<GeometricFigure>() {
-        {
-            add(backSquare);
-            add(frontSquare);
-            add(skewedRectangle);
-        }
-    };
-    PainterAlgorithm painterAlgorithm = new PainterAlgorithm();
-
-    private CameraMovementInterface cameraMovement = new CameraMovement(backSquare);
-    private CameraMovementInterface cameraMovement2 = new CameraMovement(frontSquare);
-    private CameraMovementInterface cameraMovement3 = new CameraMovement(skewedRectangle);
-
+    private ArrayList<GeometricFigure> figures = CreatedGeometricFigures.getCreatedFigures();
+    private CameraMovementInterface cameraMovement = new CameraMovement(figures);
+    private PainterAlgorithm painterAlgorithm = new PainterAlgorithm();
     private ArrayList<Polygon> polygons = new ArrayList<>();
 
     @Override
@@ -53,74 +38,46 @@ public class GUI extends Application {
 
         scene.addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
             if (event.getCode() == KeyCode.UP) {
-                cameraMovement.translateUp();
-                cameraMovement2.translateUp();
-                cameraMovement3.translateUp();
+                cameraMovement.TranslateUp();
                 applyChangesToGraphics(root);
             } else if (event.getCode() == KeyCode.DOWN) {
-                cameraMovement.translateDown();
-                cameraMovement2.translateDown();
-                cameraMovement3.translateDown();
+                cameraMovement.TranslateDown();
                 applyChangesToGraphics(root);
             } else if (event.getCode() == KeyCode.RIGHT) {
-                cameraMovement.translateRight();
-                cameraMovement2.translateRight();
-                cameraMovement3.translateRight();
+                cameraMovement.TranslateRight();
                 applyChangesToGraphics(root);
             } else if (event.getCode() == KeyCode.LEFT) {
-                cameraMovement.translateLeft();
-                cameraMovement2.translateLeft();
-                cameraMovement3.translateLeft();
+                cameraMovement.TranslateLeft();
                 applyChangesToGraphics(root);
             } else if (event.getCode() == KeyCode.W) {
-                cameraMovement.translateForward();
-                cameraMovement2.translateForward();
-                cameraMovement3.translateForward();
+                cameraMovement.TranslateForward();
                 applyChangesToGraphics(root);
             } else if (event.getCode() == KeyCode.S) {
-                cameraMovement.translateBackward();
-                cameraMovement2.translateBackward();
-                cameraMovement3.translateBackward();
+                cameraMovement.TranslateBackward();
                 applyChangesToGraphics(root);
             } else if (event.getCode() == KeyCode.DIGIT1) {
-                cameraMovement.pivotOX(1);//pivot down
-                cameraMovement2.pivotOX(1);//pivot down
-                cameraMovement3.pivotOX(1);//pivot down
+                cameraMovement.PivotOX(1);
                 applyChangesToGraphics(root);
             } else if (event.getCode() == KeyCode.DIGIT2) {
-                cameraMovement.pivotOX(-1);//pivot up
-                cameraMovement2.pivotOX(-1);//pivot up
-                cameraMovement3.pivotOX(-1);//pivot up
+                cameraMovement.PivotOX(-1);
                 applyChangesToGraphics(root);
             } else if (event.getCode() == KeyCode.DIGIT3) {
-                cameraMovement.pivotOY(1);//pivot left
-                cameraMovement2.pivotOY(1);//pivot left
-                cameraMovement3.pivotOY(1);//pivot left
+                cameraMovement.PivotOY(1);
                 applyChangesToGraphics(root);
             } else if (event.getCode() == KeyCode.DIGIT4) {
-                cameraMovement.pivotOY(-1);//pivot right
-                cameraMovement2.pivotOY(-1);//pivot right
-                cameraMovement3.pivotOY(-1);//pivot right
+                cameraMovement.PivotOY(-1);
                 applyChangesToGraphics(root);
             } else if (event.getCode() == KeyCode.DIGIT5) {
-                cameraMovement.pivotOZ(1);//piviot left
-                cameraMovement2.pivotOZ(1);//piviot left
-                cameraMovement3.pivotOZ(1);//piviot left
+                cameraMovement.PivotOZ(1);
                 applyChangesToGraphics(root);
             } else if (event.getCode() == KeyCode.DIGIT6) {
-                cameraMovement.pivotOZ(-1);//pivot right
-                cameraMovement2.pivotOZ(-1);//pivot right
-                cameraMovement3.pivotOZ(-1);//pivot right
+                cameraMovement.PivotOZ(-1);
                 applyChangesToGraphics(root);
             } else if (event.getCode() == KeyCode.Q) {
                 cameraMovement.zoomIn();
-                cameraMovement2.zoomIn();
-                cameraMovement3.zoomIn();
                 applyChangesToGraphics(root);
             } else if (event.getCode() == KeyCode.A) {
                 cameraMovement.zoomOut();
-                cameraMovement2.zoomOut();
-                cameraMovement3.zoomOut();
                 applyChangesToGraphics(root);
             }
             event.consume();
@@ -138,15 +95,15 @@ public class GUI extends Application {
         projectAndDrawAllPolygons();
         root.getChildren().addAll(polygons);
     }
-    
-    private void sortFigures(){
+
+    private void sortFigures() {
         figures = painterAlgorithm.SortByPlanes(figures);
     }
 
-    private void projectAndDrawAllPolygons() {        
-        for (GeometricFigure figure : figures) {
+    private void projectAndDrawAllPolygons() {
+        figures.forEach(figure -> {
             projectAndDrawSinglePolygon(figure);
-        }
+        });
     }
 
     private void projectAndDrawSinglePolygon(GeometricFigure figure) {
