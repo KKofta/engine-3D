@@ -11,19 +11,12 @@ public class BackSquare extends GeometricFigure {
     }
 
     private void createSquare() {
-        //initialize 3D points of the front wall 
-        Point3D frontLeftUp = new Point3D(-length, -length, 100.0);
-        Point3D frontRightUp = new Point3D(length, -length, 100.0);
-        Point3D frontLeftDown = new Point3D(-length, length, 100.0);
-        Point3D frontRightDown = new Point3D(length, length, 100.0);
-
-        //initialize 3D lines of the front wall
-        Line3D frontUp = new Line3D(frontLeftUp, frontRightUp);
-        Line3D frontDown = new Line3D(frontLeftDown, frontRightDown);
-        Line3D frontLeft = new Line3D(frontLeftUp, frontLeftDown);
-        Line3D frontRight = new Line3D(frontRightUp, frontRightDown);
+        //initialize 3D points of the polygon
+        Point3D leftUp = new Point3D(-length, -length, 100.0);
+        Point3D rightUp = new Point3D(length, -length, 100.0);
+        Point3D leftDown = new Point3D(-length, length, 100.0);
+        Point3D rightDown = new Point3D(length, length, 100.0);
         
-        Collections.addAll(lineList, frontUp, frontDown, frontLeft, frontRight);
-        Collections.addAll(pointList, frontLeftUp, frontRightUp, frontRightDown, frontLeftDown);
+        Collections.addAll(pointList, leftUp, rightUp, rightDown, leftDown);
     }
 }
