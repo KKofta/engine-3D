@@ -19,7 +19,7 @@ public class FigureMovement implements FigureMovementInterface {
 
     @Override
     public void translateUp() {
-        double Ty = 2.0;
+        double Ty = 6.0;
 
         for (int i = 0; i < points3DList.size(); i++) {
             //current values of y coordinate            
@@ -32,7 +32,7 @@ public class FigureMovement implements FigureMovementInterface {
 
     @Override
     public void translateDown() {
-        double Ty = 2.0;
+        double Ty = 6.0;
 
         for (int i = 0; i < points3DList.size(); i++) {
             //current values of y coordinate          
@@ -45,7 +45,7 @@ public class FigureMovement implements FigureMovementInterface {
 
     @Override
     public void translateRight() {
-        double Tx = 2.0;
+        double Tx = 6.0;
 
         for (int i = 0; i < points3DList.size(); i++) {
             //current values of y coordinate            
@@ -58,7 +58,7 @@ public class FigureMovement implements FigureMovementInterface {
 
     @Override
     public void translateLeft() {
-        double Tx = 2.0;
+        double Tx = 6.0;
 
         for (int i = 0; i < points3DList.size(); i++) {
             //current values of y coordinate
@@ -71,7 +71,7 @@ public class FigureMovement implements FigureMovementInterface {
 
     @Override
     public void translateForward() {
-        double Tz = 2.0;
+        double Tz = 6.0;
 
         for (int i = 0; i < points3DList.size(); i++) {
             //current values of y coordinate            
@@ -84,7 +84,7 @@ public class FigureMovement implements FigureMovementInterface {
 
     @Override
     public void translateBackward() {
-        double Tz = 2.0;
+        double Tz = 6.0;
 
         for (int i = 0; i < points3DList.size(); i++) {
             //current values of y coordinate

@@ -57,22 +57,22 @@ public class GUI extends Application {
                 cameraMovement.TranslateBackward();
                 applyChangesToGraphics(root);
             } else if (event.getCode() == KeyCode.DIGIT1) {
-                cameraMovement.PivotOX(1);
+                cameraMovement.PivotOX(2);
                 applyChangesToGraphics(root);
             } else if (event.getCode() == KeyCode.DIGIT2) {
-                cameraMovement.PivotOX(-1);
+                cameraMovement.PivotOX(-2);
                 applyChangesToGraphics(root);
             } else if (event.getCode() == KeyCode.DIGIT3) {
-                cameraMovement.PivotOY(1);
+                cameraMovement.PivotOY(2);
                 applyChangesToGraphics(root);
             } else if (event.getCode() == KeyCode.DIGIT4) {
-                cameraMovement.PivotOY(-1);
+                cameraMovement.PivotOY(-2);
                 applyChangesToGraphics(root);
             } else if (event.getCode() == KeyCode.DIGIT5) {
-                cameraMovement.PivotOZ(1);
+                cameraMovement.PivotOZ(2);
                 applyChangesToGraphics(root);
             } else if (event.getCode() == KeyCode.DIGIT6) {
-                cameraMovement.PivotOZ(-1);
+                cameraMovement.PivotOZ(-2);
                 applyChangesToGraphics(root);
             } else if (event.getCode() == KeyCode.Q) {
                 cameraMovement.zoomIn();
