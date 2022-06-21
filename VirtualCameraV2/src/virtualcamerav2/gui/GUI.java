@@ -6,6 +6,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import virtualcamerav2.entities.GeometricFigure;
@@ -140,6 +141,7 @@ public class GUI extends Application {
     private void drawPolygon(GeometricFigure figure) {
         Polygon polygon = new Polygon(figure.getPolygonPoints());
         polygon.setFill(figure.getColor());
+        polygon.setStroke(Color.BLACK);
         polygons.add(polygon);
     }
 
