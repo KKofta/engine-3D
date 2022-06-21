@@ -41,10 +41,13 @@ public class PainterAlgorithm {
 
         for (int i = 0; i < numberOfPoints; i++) {
             double locationPoint = plane[0] * list.get(i).getX() + plane[1] * list.get(i).getY() + plane[2] * list.get(i).getZ() + plane[3];
-
+            
             if (locationPoint * locationObservator > 0) {
                 sameSide++;
+            } else if (locationPoint * locationObservator < 0) {
+                otherSide++;
             } else {
+                sameSide++;
                 otherSide++;
             }
         }
@@ -69,8 +72,8 @@ public class PainterAlgorithm {
 
         for (int i = 0; i < numberOfPoints; i++) {
             double locationPoint = plane[0] * list.get(i).getX() + plane[1] * list.get(i).getY() + plane[2] * list.get(i).getZ() + plane[3];
-
-            if (locationPoint * locationObservator > 0) {
+            
+            if (locationPoint * locationObservator >= 0) {
                 sameSide++;
             }
         }
