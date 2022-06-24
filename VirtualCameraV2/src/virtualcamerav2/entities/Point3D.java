@@ -48,10 +48,6 @@ public class Point3D {
         updateVector();
     }
 
-    public double[][] getPointVector() {
-        return vector;
-    }
-
     private void updateVector() {
         vector[0][0] = this.x;
         vector[1][0] = this.y;
@@ -59,4 +55,13 @@ public class Point3D {
         vector[3][0] = 1;
     }
 
+    public double[][] getPointVector() {
+        return vector;
+    }
+    
+    //copies of points for startPointList
+    public Point3D copy(){
+        Point3D newPoint = new Point3D(this.x,this.y,this.z);
+        return newPoint;
+    }
 }
