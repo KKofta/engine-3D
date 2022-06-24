@@ -7,6 +7,7 @@ public class RightWall extends GeometricFigure {
 
     public RightWall() {
         color = Color.DARKCYAN;
+        name = "RightWall";
         createSquare();
     }
 
@@ -18,6 +19,7 @@ public class RightWall extends GeometricFigure {
         Point3D backDown = new Point3D(length, length, 150.0);
 
         Collections.addAll(pointList, frontUp, backUp, backDown, frontDown);
+        Collections.addAll(startPointList, frontUp.copy(), backUp.copy(), backDown.copy(), frontDown.copy());
     }
 
 }

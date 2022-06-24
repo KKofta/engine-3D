@@ -7,6 +7,7 @@ public class LeftWall extends GeometricFigure {
 
     public LeftWall() {
         color = Color.DARKCYAN;
+        name = "LeftWall";
         createSquare();
     }
 
@@ -18,5 +19,6 @@ public class LeftWall extends GeometricFigure {
         Point3D backDown = new Point3D(-length, length, 150.0);
 
         Collections.addAll(pointList, frontUp, backUp, backDown, frontDown);
+        Collections.addAll(startPointList, frontUp.copy(), backUp.copy(), backDown.copy(), frontDown.copy());
     }
 }

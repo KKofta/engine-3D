@@ -7,6 +7,7 @@ public class DownWall extends GeometricFigure {
 
     public DownWall() {
         color = Color.DARKCYAN;
+        name = "DownWall";
         createSquare();
     }
 
@@ -18,6 +19,7 @@ public class DownWall extends GeometricFigure {
         Point3D rightBack = new Point3D(length, length, 150.0);
 
         Collections.addAll(pointList, leftFront, rightFront, rightBack, leftBack);
+        Collections.addAll(startPointList, leftFront.copy(), rightFront.copy(), rightBack.copy(), leftBack.copy());
     }
 
 }

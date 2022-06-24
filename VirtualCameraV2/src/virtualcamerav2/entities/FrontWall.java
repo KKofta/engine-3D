@@ -7,6 +7,7 @@ public class FrontWall extends GeometricFigure {
 
     public FrontWall() {
         color = Color.DARKCYAN;
+        name = "FrontWall";
         createSquare();
     }
 
@@ -18,5 +19,6 @@ public class FrontWall extends GeometricFigure {
         Point3D rightDown = new Point3D(length, length, 50.0);
 
         Collections.addAll(pointList, leftUp, rightUp, rightDown, leftDown);
+        Collections.addAll(startPointList, leftUp.copy(), rightUp.copy(), rightDown.copy(), leftDown.copy());
     }
 }

@@ -7,11 +7,17 @@ public class GeometricFigure {
     
     protected final double length = 50;
     protected ArrayList<Point3D> pointList = new ArrayList<>();
+    protected ArrayList<Point3D> startPointList = new ArrayList<>();
     protected double [] polygonPoints = new double [8];
     protected Color color = Color.BLACK;
+    protected String name;
     
     public ArrayList<Point3D> getFigurePoints() {
         return pointList;
+    }
+    
+    public ArrayList<Point3D> getFigureStartPoints() {
+        return startPointList;
     }
     
     public void setPolygonPoint(double p, int i){
@@ -26,42 +32,14 @@ public class GeometricFigure {
         return color;
     }
     
-    public double getBiggestZ(){
-        return calculateBiggestZ();
-    }
-    
-    public double getSmallestZ(){
-        return calculateSmallestZ();
-    }
-    
-    private double calculateBiggestZ(){
-        double biggestZ = Integer.MIN_VALUE;
-        for(Point3D point : pointList){
-            if(point.getZ() > biggestZ){
-                biggestZ = point.getZ();
-            }
-        }
-        return biggestZ;
-    }
-    
-    private double calculateSmallestZ(){
-        double smallestZ = Integer.MAX_VALUE;
-        for(Point3D point : pointList){
-            if(point.getZ() < smallestZ){
-                smallestZ = point.getZ();
-            }
-        }
-        return smallestZ;
-    }
-    
     public double [] calculatePlaneEquation() {
-        //we need at least 3 points to determine a plane
-        Point3D P = pointList.get(0);
-        Point3D Q = pointList.get(1);
-        Point3D R = pointList.get(2);
+        //we need at least 3 points to determine a plane        
+        Point3D P = startPointList.get(0);
+        Point3D Q = startPointList.get(1);
+        Point3D R = startPointList.get(2);
 
         double [] vectorPQ = new double []{Q.getX() - P.getX(), Q.getY() - P.getY(), Q.getZ() - P.getZ()};
-        double [] vectorPR = new double []{R.getX() - P.getX(), R.getY() - P.getY(), R.getZ() - P.getZ()};
+        double [] vectorPR = new double []{R.getX() - P.getX(), R.getY() - P.getY(), R.getZ() - P.getZ()};        
         
         //n = PQ x PR. Normal vector n=(a,b,c)
         double a = vectorPQ[1]*vectorPR[2] - vectorPQ[2]*vectorPR[1];
@@ -73,5 +51,10 @@ public class GeometricFigure {
         
         //a*x + b*y + c*z - d = 0 
         return new double []{a,b,c,-d};
+    }
+    
+    //testing method
+    public String getName(){
+        return name;
     }
 }

@@ -7,6 +7,7 @@ public class UpWall extends GeometricFigure {
 
     public UpWall() {
         color = Color.DARKCYAN;
+        name = "UpWall";
         createSquare();
     }
 
@@ -18,6 +19,8 @@ public class UpWall extends GeometricFigure {
         Point3D rightBack = new Point3D(length, -length, 150.0);
 
         Collections.addAll(pointList, leftFront, rightFront, rightBack, leftBack);
+        Collections.addAll(startPointList, leftFront.copy(), rightFront.copy(), rightBack.copy(), leftBack.copy());
+        
     }
 
 }
