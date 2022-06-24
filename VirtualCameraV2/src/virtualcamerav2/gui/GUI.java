@@ -10,6 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import virtualcamerav2.entities.GeometricFigure;
+import virtualcamerav2.entities.Observator;
 import virtualcamerav2.hiddenSurfaceElimination.PainterAlgorithm;
 import virtualcamerav2.interfaces.CameraMovementInterface;
 import virtualcamerav2.logic.CreatedGeometricFigures;
@@ -24,7 +25,8 @@ public class GUI extends Application {
     private final double middleY = HEIGHT / 2.0;
 
     private ArrayList<GeometricFigure> figures = CreatedGeometricFigures.getCreatedFigures();
-    private CameraMovementInterface cameraMovement = new CameraMovement(figures);
+    private Observator observator = new Observator(0,0,0);
+    private CameraMovementInterface cameraMovement = new CameraMovement(figures, observator);
     private PainterAlgorithm painterAlgorithm = new PainterAlgorithm();
     private ArrayList<Polygon> polygons = new ArrayList<>();
 
@@ -98,7 +100,7 @@ public class GUI extends Application {
     }
 
     private void sortFigures() {
-        figures = painterAlgorithm.SortByPlanes(figures);
+        figures = painterAlgorithm.SortByPlanes(figures, observator);
     }
 
     private void projectAndDrawAllPolygons() {
