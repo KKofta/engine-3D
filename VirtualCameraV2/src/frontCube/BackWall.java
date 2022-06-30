@@ -1,12 +1,12 @@
-package virtualcamerav2.entities;
+package frontCube;
 
 import java.util.Collections;
-import javafx.scene.paint.Color;
+import virtualcamerav2.entities.GeometricFigure;
+import virtualcamerav2.entities.Point3D;
 
 public class BackWall extends GeometricFigure {
 
     public BackWall() {
-        color = Color.DARKCYAN;
         name = "BackWall";
         createSquare();
     }
@@ -19,6 +19,9 @@ public class BackWall extends GeometricFigure {
         Point3D rightDown = new Point3D(length, length, 150.0);
 
         Collections.addAll(pointList, leftUp, rightUp, rightDown, leftDown);
-        Collections.addAll(startPointList, leftUp.copy(), rightUp.copy(), rightDown.copy(), leftDown.copy());
+        //Collections.addAll(startPointList, leftUp.copy(), rightUp.copy(), rightDown.copy(), leftDown.copy());
+        
+        //test dla wektora normalnego skierowanego na zewnątrz - welug wskazowek zegara
+        Collections.addAll(startPointList,  rightUp.copy(), leftUp.copy(), leftDown.copy(), rightDown.copy());
     }
 }

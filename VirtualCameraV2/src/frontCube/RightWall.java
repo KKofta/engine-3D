@@ -1,12 +1,12 @@
-package virtualcamerav2.entities;
+package frontCube;
 
 import java.util.Collections;
-import javafx.scene.paint.Color;
+import virtualcamerav2.entities.GeometricFigure;
+import virtualcamerav2.entities.Point3D;
 
 public class RightWall extends GeometricFigure {
 
     public RightWall() {
-        color = Color.DARKCYAN;
         name = "RightWall";
         createSquare();
     }

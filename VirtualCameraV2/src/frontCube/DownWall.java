@@ -1,12 +1,12 @@
-package virtualcamerav2.entities;
+package frontCube;
 
 import java.util.Collections;
-import javafx.scene.paint.Color;
+import virtualcamerav2.entities.GeometricFigure;
+import virtualcamerav2.entities.Point3D;
 
 public class DownWall extends GeometricFigure {
 
     public DownWall() {
-        color = Color.DARKCYAN;
         name = "DownWall";
         createSquare();
     }

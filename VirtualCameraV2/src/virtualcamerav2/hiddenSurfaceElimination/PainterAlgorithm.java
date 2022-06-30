@@ -1,7 +1,6 @@
 package virtualcamerav2.hiddenSurfaceElimination;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import virtualcamerav2.entities.GeometricFigure;
 import virtualcamerav2.entities.Observator;
 import virtualcamerav2.entities.Point3D;
@@ -16,7 +15,7 @@ public class PainterAlgorithm {
         boolean swapped;
         for (int i = 0; i < figures.size() - 1; i++) {
             swapped = false;
-            System.out.println("Iteration: "+i);
+            //System.out.println("Iteration: "+i);
             for (int j = 0; j < figures.size() - i - 1; j++) {
                 boolean performSwap = checkFigureSide(j, figures);
 
@@ -25,20 +24,20 @@ public class PainterAlgorithm {
                     figures.set(j, figures.get(j + 1));
                     figures.set(j + 1, temp);
                     swapped = true;
-                    System.out.println("Swapped");
+                    //System.out.println("Swapped");
                 }
             }
             if (swapped == false) {
                 break;
             }
         }
-        System.out.println("-----------------------------------------------------------------------");
+        //System.out.println("-----------------------------------------------------------------------");
         return figures;
     }
 
     private boolean checkFigureSide(int index, ArrayList<GeometricFigure> figures) {
         //---------------- start testing area -------------------------
-        System.out.println("---checkFigureSide--- : "+ figures.get(index).getName() + " | " + figures.get(index+1).getName());
+        /*System.out.println("---checkFigureSide--- : "+ figures.get(index).getName() + " | " + figures.get(index+1).getName());
         ArrayList<Point3D> figure1Points = new ArrayList(figures.get(index).getFigureStartPoints());
         ArrayList<Point3D>  figure2Points = new ArrayList(figures.get(index+1).getFigureStartPoints());
         System.out.println("Figure 1:"+figures.get(index).getName());
@@ -53,7 +52,7 @@ public class PainterAlgorithm {
         System.out.println(Arrays.deepToString(figure2Points.get(3).getPointVector()));
         System.out.println("Observator:");
         System.out.println(observator.getX()+", "+observator.getY() +", "+ observator.getZ());
-        observator.showAngles();
+        observator.showAngles();*/
         //---------------- end testing area -------------------------
         
         int sameSide = 0;
@@ -68,7 +67,7 @@ public class PainterAlgorithm {
         for (int i = 0; i < numberOfPoints; i++) {
             double locationPoint = plane[0] * listOfPoints.get(i).getX() + plane[1] * listOfPoints.get(i).getY() + plane[2] * listOfPoints.get(i).getZ() + plane[3];
             
-            System.out.println(locationPoint + " * " + locationObservator + " = "+ locationPoint*locationObservator);
+            //System.out.println(locationPoint + " * " + locationObservator + " = "+ locationPoint*locationObservator);
             if (locationPoint * locationObservator > 0) {
                 sameSide++;
             } else if (locationPoint * locationObservator < 0) {

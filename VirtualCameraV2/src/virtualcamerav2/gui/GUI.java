@@ -11,8 +11,8 @@ import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import virtualcamerav2.entities.GeometricFigure;
 import virtualcamerav2.entities.Observator;
+import virtualcamerav2.entities.Point3D;
 import virtualcamerav2.hiddenSurfaceElimination.PainterAlgorithm;
-import virtualcamerav2.interfaces.CameraMovementInterface;
 import virtualcamerav2.logic.CreatedGeometricFigures;
 import virtualcamerav2.logic.MatrixOperations;
 import virtualcamerav2.logic.CameraMovement;
@@ -26,7 +26,8 @@ public class GUI extends Application {
 
     private ArrayList<GeometricFigure> figures = CreatedGeometricFigures.getCreatedFigures();
     private Observator observator = new Observator(0,0,0);
-    private CameraMovementInterface cameraMovement = new CameraMovement(figures, observator);
+    private Point3D light = new Point3D(1,2,3);
+    private CameraMovement cameraMovement = new CameraMovement(figures, observator, light);
     private PainterAlgorithm painterAlgorithm = new PainterAlgorithm();
     private ArrayList<Polygon> polygons = new ArrayList<>();
 
@@ -142,7 +143,7 @@ public class GUI extends Application {
 
     private void drawPolygon(GeometricFigure figure) {
         Polygon polygon = new Polygon(figure.getPolygonPoints());
-        polygon.setFill(figure.getColor());
+        polygon.setFill(figure.updateAndGetColor(observator, light));
         polygon.setStroke(Color.BLACK);
         polygons.add(polygon);
     }
