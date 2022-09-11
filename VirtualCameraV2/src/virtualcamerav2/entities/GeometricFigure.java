@@ -6,10 +6,10 @@ import virtualcamerav2.logic.VectorOperations;
 
 public class GeometricFigure {
     
-    protected final double length = 50;
+    protected final double length = 50; //uzywane tylko do statycznych kostek. Nie do face
     protected ArrayList<Point3D> pointList = new ArrayList<>();
     protected ArrayList<Point3D> startPointList = new ArrayList<>();
-    protected double [] polygonPoints = new double [8];
+    protected double [] polygonPoints = new double [6];
     protected final Color BASE_COLOR = Color.color(18.0/256.0, 168.0/256.0, 240.0/256.0);
     protected Color lighteningColor;
     protected String name;
@@ -49,6 +49,10 @@ public class GeometricFigure {
     
     public Color updateAndGetColor(Observator observator, Point3D light){
         updateColor(observator, light);
+        return lighteningColor;
+    }
+    
+    public Color getColor(){
         return lighteningColor;
     }
     
