@@ -19,7 +19,7 @@ import virtualcamerav2.logic.CameraMovement;
 
 public class GUI extends Application {
     
-    FileReader fileReader = new FileReader("src\\resources\\precel_g.obj");
+    FileReader fileReader = new FileReader("src\\resources\\precel_g.obj"); //nothing
 
     private final double WIDTH = 900.0;
     private final double HEIGHT = 650.0;
