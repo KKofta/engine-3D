@@ -1,11 +1,11 @@
 package virtualcamerav2.logic;
 
-import RightCube.BackWallRight;
-import RightCube.DownWallRight;
-import RightCube.FrontWallRight;
-import RightCube.LeftWallRight;
-import RightCube.RightWallRight;
-import RightCube.UpWallRight;
+import rightCube.BackWallRight;
+import rightCube.DownWallRight;
+import rightCube.FrontWallRight;
+import rightCube.LeftWallRight;
+import rightCube.RightWallRight;
+import rightCube.UpWallRight;
 import java.util.ArrayList;
 import frontCube.BackWall;
 import frontCube.DownWall;
@@ -34,7 +34,7 @@ public class CreatedGeometricFigures {
     
     private static ArrayList<GeometricFigure> figures = new ArrayList<GeometricFigure>() {
         {
-            add(frontWall);
+            /*add(frontWall);
             add(upWall);
             add(backWall);
             add(downWall);
@@ -45,7 +45,7 @@ public class CreatedGeometricFigures {
             add(backWallRight);
             add(rightWallRight);
             add(upWallRight);
-            add(downWallRight);
+            add(downWallRight);*/
         }
     };
 

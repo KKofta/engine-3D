@@ -1,4 +1,4 @@
-package RightCube;
+package rightCube;
 
 import java.util.Collections;
 import virtualcamerav2.entities.GeometricFigure;
