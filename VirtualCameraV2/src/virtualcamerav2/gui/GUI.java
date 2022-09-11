@@ -6,25 +6,29 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import virtualcamerav2.entities.GeometricFigure;
 import virtualcamerav2.entities.Observator;
 import virtualcamerav2.entities.Point3D;
+import virtualcamerav2.hiddenSurfaceElimination.FigureSorter;
 import virtualcamerav2.hiddenSurfaceElimination.PainterAlgorithm;
-import virtualcamerav2.logic.CreatedGeometricFigures;
+import virtualcamerav2.input.FileReader;
 import virtualcamerav2.logic.MatrixOperations;
 import virtualcamerav2.logic.CameraMovement;
 
 public class GUI extends Application {
+    
+    FileReader fileReader = new FileReader("src\\resources\\precel_g.obj");
 
     private final double WIDTH = 900.0;
     private final double HEIGHT = 650.0;
     private final double middleX = WIDTH / 2.0;
     private final double middleY = HEIGHT / 2.0;
 
-    private ArrayList<GeometricFigure> figures = CreatedGeometricFigures.getCreatedFigures();
+    private ArrayList<GeometricFigure> figures = fileReader.getFaces();
+    
+    //private ArrayList<GeometricFigure> figures = CreatedGeometricFigures.getCreatedFigures();
     private Observator observator = new Observator(0,0,0);
     private Point3D light = new Point3D(1,2,3);
     private CameraMovement cameraMovement = new CameraMovement(figures, observator, light);
@@ -33,6 +37,7 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
         sortFigures();
         projectAndDrawAllPolygons();
 
@@ -101,7 +106,8 @@ public class GUI extends Application {
     }
 
     private void sortFigures() {
-        figures = painterAlgorithm.SortByPlanes(figures, observator);
+        //figures = painterAlgorithm.SortByPlanes(figures, observator);
+        figures.sort(new FigureSorter());
     }
 
     private void projectAndDrawAllPolygons() {
@@ -144,7 +150,7 @@ public class GUI extends Application {
     private void drawPolygon(GeometricFigure figure) {
         Polygon polygon = new Polygon(figure.getPolygonPoints());
         polygon.setFill(figure.updateAndGetColor(observator, light));
-        polygon.setStroke(Color.BLACK);
+        polygon.setStroke(figure.getColor());
         polygons.add(polygon);
     }
 
