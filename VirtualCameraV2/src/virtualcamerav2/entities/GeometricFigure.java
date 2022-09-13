@@ -6,7 +6,7 @@ import virtualcamerav2.logic.VectorOperations;
 
 public class GeometricFigure {
     
-    protected final double length = 50; //uzywane tylko do statycznych kostek. Nie do face
+    protected final double length = 50;
     protected ArrayList<Point3D> pointList = new ArrayList<>();
     protected ArrayList<Point3D> startPointList = new ArrayList<>();
     protected double [] polygonPoints = new double [6];
@@ -14,18 +14,22 @@ public class GeometricFigure {
     protected Color lighteningColor;
     protected String name;
     
-    public void updateColor(Observator observator, Point3D light){
-        //light vector zrobic lokalnie tu na testy
-        //double [] vectorLight = new double []{light.getX(), light.getY(), light.getZ()}; //swiatlo zmieniające kąt - na sfery
-        double [] vectorLight = new double []{0,-1,3};
-        double [] vectorLightNormalized = VectorOperations.normalize(vectorLight);
-        
-        double [] vectorNormal = calculateNormalVectorStatic();
+    private void updateColor(Observator observator, Point3D light){
+        double [] vectorLight = new double []{light.getX(), light.getY(), light.getZ()};
+        double [] vectorLightNormalized = VectorOperations.normalize(vectorLight); //no need to normalize every time
+
+        double [] vectorNormal = calculateNormalVectorChanged();
         double [] vectorNormalNormalized = VectorOperations.normalize(vectorNormal);
         
-        double dot = VectorOperations.dot(vectorNormalNormalized, vectorLightNormalized);        
-        double cos = Math.pow(VectorOperations.cos(vectorNormalNormalized, vectorLightNormalized), Light.N.value);
-        double lightRatio = Light.IP.value * (Light.KD.value * dot + Light.KS.value * cos) + Light.AMBIENT.value;
+        double dotProductNL = VectorOperations.dot(vectorNormalNormalized, vectorLightNormalized);
+        
+        double cos = 0;
+        if (dotProductNL > Light.MIN.value) {
+            //cosinus między wektorem od płaszczyzny do kamery, a wektorem światła po odbiciu od płaszczyny
+            cos = Math.pow(VectorOperations.cos(new double []{0 - pointList.get(0).getX(), 0 - pointList.get(0).getY(), 0 - pointList.get(0).getZ()},
+                VectorOperations.getReboundVector(vectorNormalNormalized, light)), Light.N.value);
+        }
+        double lightRatio = Light.SA.value + Light.IP.value * (Light.KD.value * dotProductNL + Light.KS.value * cos);
         lightRatio = Math.max(Light.MIN.value, Math.min(Light.MAX.value, lightRatio));
         
         lighteningColor = Color.color( BASE_COLOR.getRed() * lightRatio, BASE_COLOR.getGreen() * lightRatio, BASE_COLOR.getBlue() * lightRatio );

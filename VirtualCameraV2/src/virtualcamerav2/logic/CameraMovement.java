@@ -20,7 +20,7 @@ public class CameraMovement {
         });
         this.observator = observator;
         this.light = light;
-        lightMovement = new FigureMovement(this.light);
+        this.lightMovement = new FigureMovement(this.light);
     }
     
     public void TranslateUp() {
@@ -28,7 +28,6 @@ public class CameraMovement {
             cameraMovementOject.translateUp();
         });
         observator.moveUp();
-        //lightMovement.translateUpLight();
     }
     
     public void TranslateDown() {
@@ -36,7 +35,6 @@ public class CameraMovement {
             cameraMovementOject.translateDown();
         });
         observator.moveDown();
-        //lightMovement.translateDownLight();
     }
     
     public void TranslateRight() {
@@ -44,7 +42,6 @@ public class CameraMovement {
             cameraMovementOject.translateRight();
         });
         observator.moveRight();
-        //lightMovement.translateRightLight();
     }
     
     public void TranslateLeft() {
@@ -52,7 +49,6 @@ public class CameraMovement {
             cameraMovementOject.translateLeft();
         });
         observator.moveLeft();
-        //lightMovement.translateLeftLight();
     }
     
     public void TranslateForward() {
@@ -60,7 +56,6 @@ public class CameraMovement {
             cameraMovementOject.translateForward();
         });
         observator.moveForward();
-        //lightMovement.translateForwardLight();
     }
     
     public void TranslateBackward() {
@@ -68,7 +63,6 @@ public class CameraMovement {
             cameraMovementOject.translateBackward();
         });
         observator.moveBackward();
-        //lightMovement.translateBackwardLight();
     }
     
     public void PivotOX(double degree) {
@@ -76,7 +70,7 @@ public class CameraMovement {
             cameraMovementOject.pivotOX(degree);
         });
         observator.changAngleYZ(degree);
-        //lightMovement.pivotOXLight(degree);
+        lightMovement.pivotOXLight(-degree);
     }
     
     public void PivotOY(double degree) {
@@ -84,7 +78,7 @@ public class CameraMovement {
             cameraMovementOject.pivotOY(degree);
         });
         observator.changAngleXZ(degree);
-        //lightMovement.pivotOYLight(degree);
+        lightMovement.pivotOYLight(degree);
     }
     
     public void PivotOZ(double degree) {
@@ -92,7 +86,7 @@ public class CameraMovement {
             cameraMovementOject.pivotOZ(degree);
         });
         observator.changAngleXY(degree);
-        //lightMovement.pivotOZLight(degree);
+        lightMovement.pivotOZLight(-degree);
     }
     
     public void zoomIn() {

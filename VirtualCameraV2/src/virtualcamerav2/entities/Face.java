@@ -16,7 +16,7 @@ public class Face extends GeometricFigure {
     }
     
     private void createFace(){
-        Collections.addAll(pointList, this.p1, this.p2, this.p3);
+        Collections.addAll(pointList, this.p3, this.p2, this.p1);
         Collections.addAll(startPointList, this.p3.copy(), this.p2.copy(), this.p1.copy());
     }
 }

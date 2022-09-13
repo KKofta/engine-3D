@@ -19,7 +19,7 @@ import virtualcamerav2.logic.CameraMovement;
 
 public class GUI extends Application {
     
-    FileReader fileReader = new FileReader("src\\resources\\precel_g.obj"); //nothing
+    FileReader fileReader = new FileReader("src\\resources\\precel_big.obj");
 
     private final double WIDTH = 900.0;
     private final double HEIGHT = 650.0;
@@ -28,9 +28,8 @@ public class GUI extends Application {
 
     private ArrayList<GeometricFigure> figures = fileReader.getFaces();
     
-    //private ArrayList<GeometricFigure> figures = CreatedGeometricFigures.getCreatedFigures();
     private Observator observator = new Observator(0,0,0);
-    private Point3D light = new Point3D(1,2,3);
+    private Point3D light = new Point3D(-1,-2,2);
     private CameraMovement cameraMovement = new CameraMovement(figures, observator, light);
     private PainterAlgorithm painterAlgorithm = new PainterAlgorithm();
     private ArrayList<Polygon> polygons = new ArrayList<>();
