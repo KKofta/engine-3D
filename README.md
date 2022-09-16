@@ -91,6 +91,9 @@ Where:
 
 ### Screenshots
 
+- Chess Pieces:
+  <img src="https://github.com/KKofta/engine-3D/blob/master/Screenshots/chess.png">
+
 - Smooth Toruses:
   <img src="https://github.com/KKofta/engine-3D/blob/master/Screenshots/toruses.png" width=100%>
 
