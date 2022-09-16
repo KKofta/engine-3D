@@ -20,7 +20,7 @@ The following topics were included in the project:
 - Representation of a three-dimensional space on a plane;
 - Geometric transformations – translations, rotations and zoom;
 - Hidden surface elimination – <a href="https://en.wikipedia.org/wiki/Painter%27s_algorithm">Painter's Algorithm</a>;
-- Lighting modeling – <a href="https://en.wikipedia.org/wiki/Phong_reflection_model">Phong Reflection Model</a>;;
+- Lighting modeling – <a href="https://en.wikipedia.org/wiki/Phong_reflection_model">Phong Reflection Model</a>.
 
 3D Engine is a desktop application whch allows user to:
 
@@ -92,15 +92,15 @@ Where:
 ### Screenshots
 
 - Smooth Toruses:
-  <img src="https://github.com/KKofta/Sudoku-AI/blob/master/Screenshots/toruses.png">
+  <img src="https://github.com/KKofta/engine-3D/blob/master/Screenshots/toruses.png">
 
 - Smooth spheres:
-  <img src="https://github.com/KKofta/Sudoku-AI/blob/master/Screenshots/spheres.png">
+  <img src="https://github.com/KKofta/engine-3D/blob/master/Screenshots/spheres.png">
 
 - Simple Toruses:
-  <img src="https://github.com/KKofta/Sudoku-AI/blob/master/Screenshots/toruses_simple.png">
+  <img src="https://github.com/KKofta/engine-3D/blob/master/Screenshots/toruses_simple.png">
 
 - Simple spheres:
-  <img src="https://github.com/KKofta/Sudoku-AI/blob/master/Screenshots/spheres_simple.png">
+  <img src="https://github.com/KKofta/engine-3D/blob/master/Screenshots/spheres_simple.png">
 
 ---
