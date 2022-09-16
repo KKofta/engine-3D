@@ -93,6 +93,7 @@ Where:
 
 - Smooth Toruses:
   <img src="https://github.com/KKofta/engine-3D/blob/master/Screenshots/toruses.png" width=100%>
+  <img src="https://github.com/KKofta/engine-3D/blob/master/Screenshots/torus.png" width=100%>
 
 - Smooth spheres:
   <img src="https://github.com/KKofta/engine-3D/blob/master/Screenshots/spheres.png" width=100%>
