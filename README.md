@@ -92,15 +92,15 @@ Where:
 ### Screenshots
 
 - Smooth Toruses:
-  <img src="https://github.com/KKofta/engine-3D/blob/master/Screenshots/toruses.png">
+  <img src="https://github.com/KKofta/engine-3D/blob/master/Screenshots/toruses.png" width=100%>
 
 - Smooth spheres:
-  <img src="https://github.com/KKofta/engine-3D/blob/master/Screenshots/spheres.png">
+  <img src="https://github.com/KKofta/engine-3D/blob/master/Screenshots/spheres.png" width=100%>
 
 - Simple Toruses:
-  <img src="https://github.com/KKofta/engine-3D/blob/master/Screenshots/toruses_simple.png">
+  <img src="https://github.com/KKofta/engine-3D/blob/master/Screenshots/toruses_simple.png" width=100%>
 
 - Simple spheres:
-  <img src="https://github.com/KKofta/engine-3D/blob/master/Screenshots/spheres_simple.png">
+  <img src="https://github.com/KKofta/engine-3D/blob/master/Screenshots/spheres_simple.png" width=100%>
 
 ---
